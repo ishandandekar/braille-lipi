@@ -12,12 +12,12 @@ def load_model():
 	model = tf.keras.models.load_model(r'models/BrailleNet.h5')
 	return model
 
-def load_and_prep_image(filename,img_shape=28):
+def load_and_prep_image(filename: Image,img_shape=28):
     img = tf.cast(filename,tf.float32)
-    img = tf.image.resize(img, [img_shape, img_shape])
+    img = img.resize((img_shape, img_shape))
     return img
 
-def predict(image,model):
+def predict(image: Image,model):
     image = load_and_prep_image(image)
     st.image(image)
     pred_prob = model.predict(tf.expand_dims(image, axis=0),verbose=0) # make prediction on image with shape [None, 28, 28, 3]
