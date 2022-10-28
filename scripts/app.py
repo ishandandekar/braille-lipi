@@ -14,7 +14,7 @@ def load_model():
 
 def load_and_prep_image(filename: Image,img_shape=28):
     img = tf.cast(filename,tf.float32)
-    img = img.resize((img_shape, img_shape))
+    img = tf.image.resize(img, (img_shape, img_shape))
     return img
 
 def predict(image: Image,model):
