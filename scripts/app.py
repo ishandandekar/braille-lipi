@@ -1,6 +1,6 @@
 import streamlit as st
 import tensorflow as tf
-from PIL import Image
+import cv2
 
 CLASS_LABELS = [chr(i) for i in range(65, 92)]
 
@@ -33,7 +33,7 @@ picture = st.camera_input("Take a picture")
 
 if picture:
     st.image(picture)
-    test_image = Image.open(picture)
+    test_image = cv2.cvtColor(cv2.imread(picture), cv2.COLOR_BGR2RGB)
     model = load_model()
     if st.button("Predict"):
         predict(test_image, model)
