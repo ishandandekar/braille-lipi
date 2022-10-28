@@ -39,7 +39,7 @@ if picture:
         predict(test_image, model)
 if image is not None:
     st.image(image=image)
-    test_image = Image.open(image)
+    test_image = Image.open(image, )
     model = load_model()
     if st.button("Predict"):
         predict(test_image,model)
