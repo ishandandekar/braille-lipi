@@ -45,9 +45,6 @@ if choice == 'image':
     if image is not None:
         st.image(image=image)
         test_image = Image.open(image)
-        st.write("-----")
-        processed_image = tf.keras.utils.array_to_img(load_and_prep_image(test_image))
-        st.image(processed_image)
         model = load_model()
         if st.button("Predict"):
             predict(test_image,model)
